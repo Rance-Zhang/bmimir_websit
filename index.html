@@ -242,7 +242,7 @@
           <span class="ds icon-position"></span>昆明市五华区春辉小区<br />
           <span class="ds icon-qq"></span>
           <span class="ib va_t qq">
-            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1911055239&amp;site=qq&amp;menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:1911055239:41" alt="欢迎咨询" title="欢迎咨询"></a>
+            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1911055239&amp;site=qq&amp;menu=yes"><img border="0" data-original="http://wpa.qq.com/pa?p=2:1911055239:41" alt="欢迎咨询" title="欢迎咨询"></a>
           </span>
           
           <br />
@@ -263,6 +263,7 @@
           'masonry': 'jquery.masonry.min.js',
           'lightbox': 'lightbox.min.js',
           'SuperSlide': 'jquery.SuperSlide.2.1.1.js',
+          'lazyload': 'jquery.lazyload.min.js',
           'baiduMap': 'baiduMap.js',
           'TQ': 'TQ.js'
         },
@@ -272,8 +273,13 @@
       
       seajs.use('jquery', function($){
 
-        seajs.use(['fittext', 'dialog', 'mCustomScrollbar', 'mousewheel', 'masonry', 'lightbox', 'SuperSlide'], 
-          function (fittext, dialog, mCustomScrollbar, mousewheel, masonry, lightbox, SuperSlide) {
+        seajs.use(['fittext', 'dialog', 'mCustomScrollbar', 'mousewheel', 'masonry', 'lightbox', 'SuperSlide', 'lazyload'], 
+          function (fittext, dialog, mCustomScrollbar, mousewheel, masonry, lightbox, SuperSlide, lazyload) {
+
+          $(".qq>a>img").lazyload({
+            threshold: 200,
+            effect : "fadeIn"
+          });
 
           $('.team .item').on('click', function () {
             dialog({
