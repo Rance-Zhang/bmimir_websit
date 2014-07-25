@@ -266,88 +266,91 @@
           'baiduMap': 'baiduMap.js',
           'TQ': 'TQ.js'
         },
-        preload: ["jquery"]
+        preload: "jquery"
       });
 
-      seajs.use('jquery');
-      seajs.use(['fittext', 'dialog', 'mCustomScrollbar', 'mousewheel', 'masonry', 'lightbox', 'SuperSlide'], 
-        function (fittext, dialog, mCustomScrollbar, mousewheel, masonry, lightbox, SuperSlide) {
+      
+      seajs.use('jquery', function($){
 
-        $('.team .item').on('click', function () {
-          dialog({
-            title: $(this).find('.title1').html(),
-            content: $(this).find('.content').html(),
-          }).show();
-        });
+        seajs.use(['fittext', 'dialog', 'mCustomScrollbar', 'mousewheel', 'masonry', 'lightbox', 'SuperSlide'], 
+          function (fittext, dialog, mCustomScrollbar, mousewheel, masonry, lightbox, SuperSlide) {
 
-        $(function($){
-          $(".introduct").fitText(2.1, { maxFontSize:'16px' });
-
-          $(".scroll").mCustomScrollbar({
-            mouseWheel:true,
-            contentTouchScroll:true,
-            scrollInertia:0,
-            scrollButtons:{
-              enable:true
-            },
-            advanced:{
-              updateOnContentResize: true
-            }
+          $('.team .item').on('click', function () {
+            dialog({
+              title: $(this).find('.title1').html(),
+              content: $(this).find('.content').html(),
+            }).show();
           });
 
-          $(".project").slide({
-            titCell:".hd a",
-            mainCell:".bd",
-            endFun:function(i,c,slider,titCell,mainCell){
-              titCell.eq(i).addClass('on');
-              mainCell.find('.flow').eq(i).masonry().masonry("reload");
-            }
-          });
+          $(function($){
+            $(".introduct").fitText(2.1, { maxFontSize:'16px' });
 
-          $(".news_box").mCustomScrollbar({
-            mouseWheel:true,
-            contentTouchScroll:true,
-            scrollInertia:0,
-            horizontalScroll:true,
-            mouseWheelPixels:$(".news_box li").width(),
-            scrollButtons:{
-              enable:true,
-              scrollType:"pixels",
-              scrollAmount:$(".news_box li").width()
-            },
-            advanced:{
-              updateOnContentResize: true,
-              updateOnBrowserResize: true
-            },
-            theme:"light-thin"
-          }).mCustomScrollbar("scrollTo","right");
-
-          $(".team").mCustomScrollbar({
-            mouseWheel:true,
-            contentTouchScroll:true,
-            scrollInertia:0,
-            horizontalScroll:true,
-            mouseWheelPixels:$(".team div").width(),
-            scrollButtons:{
-              enable:true,
-              scrollType:"pixels",
-              scrollAmount:$(".team div").width()
-            },
-            advanced:{
-              updateOnContentResize: true,
-              updateOnBrowserResize: true
-            },
-            theme:"light-thin"
-          }).mCustomScrollbar("scrollTo","right");
-
-          $('.flow').imagesLoaded( function(){
-            $(this).masonry({
-              isAnimated: true
+            $(".scroll").mCustomScrollbar({
+              mouseWheel:true,
+              contentTouchScroll:true,
+              scrollInertia:0,
+              scrollButtons:{
+                enable:true
+              },
+              advanced:{
+                updateOnContentResize: true
+              }
             });
+
+            $(".project").slide({
+              titCell:".hd a",
+              mainCell:".bd",
+              endFun:function(i,c,slider,titCell,mainCell){
+                titCell.eq(i).addClass('on');
+                mainCell.find('.flow').eq(i).masonry().masonry("reload");
+              }
+            });
+
+            $(".news_box").mCustomScrollbar({
+              mouseWheel:true,
+              contentTouchScroll:true,
+              scrollInertia:0,
+              horizontalScroll:true,
+              mouseWheelPixels:$(".news_box li").width(),
+              scrollButtons:{
+                enable:true,
+                scrollType:"pixels",
+                scrollAmount:$(".news_box li").width()
+              },
+              advanced:{
+                updateOnContentResize: true,
+                updateOnBrowserResize: true
+              },
+              theme:"light-thin"
+            }).mCustomScrollbar("scrollTo","right");
+
+            $(".team").mCustomScrollbar({
+              mouseWheel:true,
+              contentTouchScroll:true,
+              scrollInertia:0,
+              horizontalScroll:true,
+              mouseWheelPixels:$(".team div").width(),
+              scrollButtons:{
+                enable:true,
+                scrollType:"pixels",
+                scrollAmount:$(".team div").width()
+              },
+              advanced:{
+                updateOnContentResize: true,
+                updateOnBrowserResize: true
+              },
+              theme:"light-thin"
+            }).mCustomScrollbar("scrollTo","right");
+
+            $('.flow').imagesLoaded( function(){
+              $(this).masonry({
+                isAnimated: true
+              });
+            });
+
+            seajs.use(['baiduMap', 'TQ']);
+
           });
-
-          seajs.use(['baiduMap', 'TQ']);
-
         });
 
       });
