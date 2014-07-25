@@ -263,13 +263,15 @@
           'masonry': 'jquery.masonry.min.js',
           'lightbox': 'lightbox.min.js',
           'SuperSlide': 'jquery.SuperSlide.2.1.1.js',
-          'baiduMap': 'baiduMap.js'
+          'baiduMap': 'baiduMap.js',
+          'TQ': 'TQ.js'
         },
         preload: ["jquery"]
       });
 
-      seajs.use(['jquery', 'fittext', 'dialog', 'mCustomScrollbar', 'mousewheel', 'masonry', 'lightbox', 'SuperSlide'], 
-        function ($, fittext, dialog, mCustomScrollbar, mousewheel, masonry, lightbox, SuperSlide) {
+      seajs.use('jquery');
+      seajs.use(['fittext', 'dialog', 'mCustomScrollbar', 'mousewheel', 'masonry', 'lightbox', 'SuperSlide'], 
+        function (fittext, dialog, mCustomScrollbar, mousewheel, masonry, lightbox, SuperSlide) {
 
         $('.team .item').on('click', function () {
           dialog({
@@ -278,7 +280,7 @@
           }).show();
         });
 
-        $(function(){
+        $(function($){
           $(".introduct").fitText(2.1, { maxFontSize:'16px' });
 
           $(".scroll").mCustomScrollbar({
@@ -291,12 +293,6 @@
             advanced:{
               updateOnContentResize: true
             }
-          });
-
-          $('.flow').imagesLoaded( function(){
-            $(this).masonry({
-              isAnimated: true
-            });
           });
 
           $(".project").slide({
@@ -344,7 +340,13 @@
             theme:"light-thin"
           }).mCustomScrollbar("scrollTo","right");
 
-          seajs.use('baiduMap');
+          $('.flow').imagesLoaded( function(){
+            $(this).masonry({
+              isAnimated: true
+            });
+          });
+
+          seajs.use(['baiduMap', 'TQ']);
 
         });
 
@@ -363,8 +365,6 @@
         //*/
       }
     </script>
-
-    <SCRIPT LANGUAGE="JavaScript" src=http://float2006.tq.cn/floatcard?adminid=9428013&sort=0 ></SCRIPT>
 
 </body>
 </html>
